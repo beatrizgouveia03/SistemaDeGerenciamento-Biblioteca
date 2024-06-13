@@ -42,9 +42,4 @@ public class Author extends Entity {
         return booksWritten;
     }
 
-    @Override
-    public Integer getId() {
-        return super.getId();
-    }
-
 }

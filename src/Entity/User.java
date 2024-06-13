@@ -38,10 +38,4 @@ public class User extends Entity {
     public String getPassword() {
         return password;
     }
-
-    @Override
-    public Integer getId() {
-        // TODO Auto-generated method stub
-        return super.getId();
-    }
 }

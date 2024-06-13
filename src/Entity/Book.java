@@ -50,8 +50,4 @@ public class Book extends Entity {
 		return disponible;
 	}
 
-	@Override
-	public Integer getId() {
-		return super.getId();
-	}
 }

@@ -47,9 +47,4 @@ public class Loan extends Entity {
     public String getDateReturned() {
         return dateReturned;
     }
-    
-    @Override
-    public Integer getId() {
-        return super.getId();
-    }
 }

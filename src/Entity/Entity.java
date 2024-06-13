@@ -10,5 +10,16 @@ public class Entity {
 	}
 
 	/* Methods */	
-	public Integer getId() { return this.id; }
+	public Integer getId() { 
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public boolean equals(Entity other) {
+		return this.id == other.getId();
+	}
+	
 }
