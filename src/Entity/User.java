@@ -7,8 +7,7 @@ public class User extends Entity {
     private String password;
     
     /* Constructor */
-    User(Integer id, String name, String login, String password){
-        super(id);
+    public User(String name, String login, String password){
         this.name = name;
         this.login = login;
         this.password = password;

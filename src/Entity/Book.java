@@ -9,8 +9,7 @@ public class Book extends Entity {
 
 
 	/* Constructor */
-	Book(Integer id, String title, Author author, String genre){
-		super(id);
+	public Book(String title, Author author, String genre){
 		this.title = title;
 		this.author = author;
 		this.genre = genre;

@@ -3,11 +3,6 @@ package Entity;
 public class Entity {
 	/* Attributes */
 	private Integer id;
-	
-	/* Constructor */
-	Entity(Integer id){
-		this.id = id;
-	}
 
 	/* Methods */	
 	public Integer getId() { 

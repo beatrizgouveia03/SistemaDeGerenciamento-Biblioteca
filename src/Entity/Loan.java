@@ -8,8 +8,7 @@ public class Loan extends Entity {
     private String dateReturned;
 
     /* Constructor */
-    Loan(Integer id, Book bookLoaned, Client loanedTo, String dateLoaned){
-        super(id);
+    public Loan(Book bookLoaned, Client loanedTo, String dateLoaned){
         this.bookLoaned = bookLoaned;
         this.loanedTo = loanedTo;
         this.dateLoaned = dateLoaned;

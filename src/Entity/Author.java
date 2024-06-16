@@ -10,8 +10,7 @@ public class Author extends Entity {
     private List<Book> booksWritten;
 
     /* Constructor */
-    Author(Integer id, String name, String nacionality){
-        super(id);
+    public Author(String name, String nacionality){
         this.name = name;
         this.nacionality = nacionality;
         this.booksWritten = new ArrayList<Book>();

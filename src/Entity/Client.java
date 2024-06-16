@@ -8,8 +8,8 @@ public class Client extends User {
     List<Loan> loans;
 
     /* Constructor */
-    Client(Integer id, String name, String login, String password){
-        super(id, name, login, password);
+    public Client(String name, String login, String password){
+        super(name, login, password);
         loans = new ArrayList<Loan>();
     }
 
