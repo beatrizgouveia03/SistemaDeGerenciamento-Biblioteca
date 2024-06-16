@@ -13,7 +13,7 @@ import Exception.DAOException;
 import Exception.DatabaseException;
 
 public class GenericDAO<T extends Entity> implements DAO<T> {
-    /* Atributes */
+    /* Attributes */
     private Class<T> clazz;
     private Database database = Database.getInstance();
     

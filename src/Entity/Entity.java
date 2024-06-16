@@ -1,7 +1,7 @@
 package Entity;
 
 public class Entity {
-	/* Atributes */
+	/* Attributes */
 	private Integer id;
 	
 	/* Constructor */

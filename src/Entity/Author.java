@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Author extends Entity {
-    /* Atributes */
+    /* Attributes */
     private String name;
     private String nacionality;
     private List<Book> booksWritten;

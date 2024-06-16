@@ -1,7 +1,7 @@
 package Entity;
 
 public class User extends Entity {
-    /* Atributes */
+    /* Attributes */
     private String name;
     private String login;
     private String password;

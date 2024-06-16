@@ -1,7 +1,7 @@
 package Entity;
 
 public class Loan extends Entity {
-    /* Atributes */
+    /* Attributes */
     private Book bookLoaned;
     private Client loanedTo;
     private String dateLoaned;

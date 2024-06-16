@@ -9,11 +9,11 @@ import Entity.Entity;
 import Exception.DatabaseException;
 
 public class Database {
-    /* Atributes */
+    /* Attributes */
     private Map<Class<? extends Entity>, DatabaseTableI<? extends Entity>> tables = new HashMap<>();
     private static Database instance;
 
-    /* Cosntructor */
+    /* Constructor */
     public Database() {
         this.tables = new HashMap<>();
     }

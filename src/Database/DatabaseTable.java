@@ -11,23 +11,15 @@ import Exception.DatabaseException;
 import Exception.EntityNotFoundException;
 
 public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
-	/* Atributes */
+	/* Attributes */
 	private Integer idGenerator;
-	private Map<Integer, T> table;
-
-	/* Constructor */
-	DatabaseTable(){
-		this.idGenerator = 0;
-		this.table = new HashMap<>();
-	}
+	private Map<Integer, T> table = new HashMap<>();
 
 	/* Methods */
-
 	public int generateId(){
 		return this.idGenerator++;
 	}
 
-	// DUVIDA SOBRE A EXCEÇÃO LANÇADA
 	@Override
 	public void save(T entity) throws DatabaseException{
 		int id = generateId();

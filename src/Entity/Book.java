@@ -1,7 +1,7 @@
 package Entity;
 
 public class Book extends Entity {
-	/* Atributes */
+	/* Attributes */
 	private String title;
 	private Author author;
 	private String genre;
