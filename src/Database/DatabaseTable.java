@@ -29,8 +29,9 @@ public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
 
 	@Override
 	public Optional<T> findById(int id) throws DatabaseException {
-		if(this.table.containsKey(id)){
-			return Optional.of(this.table.get(id));
+		Optional<T> entity = Optional.of(this.table.get(id));
+		if(entity.isPresent()){
+			return entity;
 		} else{
 			throw new EntityNotFoundException("Entity not found in search!");
 		}
