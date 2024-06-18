@@ -37,11 +37,16 @@ public class MainView implements View {
 			else System.out.println("Invalid option. Please try again.");
 		}
 
-		if(option == 4) return;
+		if(option == 4){
+			scan.close();
+			return;
+		}
 
 		view = (option == 3)? new RegisterView(): new LoginView(option);
 		
 		view.startView();
+
+		scan.close();
 	}
 
 }
