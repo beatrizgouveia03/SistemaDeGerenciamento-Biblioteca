@@ -7,5 +7,7 @@ public class RegisterView implements View {
     private UserService service = new UserService();
 
     /* Methods */
-    public void startView() {}
+    public void startView() {
+        System.out.println("Register View");
+    }
 }

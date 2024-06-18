@@ -49,4 +49,11 @@ public class Book extends Entity {
 		return disponible;
 	}
 
+	@Override
+	public String toString() {
+		String str = this.getId() + " - Title: " + this.title + "\nAuthor: " + this.author + "Genre: " + this.genre + "Disponibility: ";
+
+		str +=  (isDisponible())? "Yes\n":"No \n";
+		return str;
+	}
 }

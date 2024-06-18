@@ -27,6 +27,7 @@ public class Database {
         DatabaseTableI<? extends Entity> table = tables.get(class1);
         ((DatabaseTableI<T>) table).save(entity);
     }
+    
     public <T extends Entity> Optional<T> findById(Class<T> clazz, int id) throws DatabaseException{
         if(!tables.containsKey(clazz)){
             tables.put(clazz, new DatabaseTable<>());
