@@ -8,8 +8,9 @@ import Service.UserService;
 
 public class LoginView implements View {
     /* Attributes */
-    private UserService service = new UserService();
     private User user;
+    private Scanner scanner = new Scanner(System.in)
+    private UserService service = new UserService();
 
     public LoginView(User user){
         this.user = user;       
@@ -17,8 +18,6 @@ public class LoginView implements View {
 
     /* Methods */
     public void startView() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Login area");
         System.out.println("Enter username:");
         String username = scanner.next();
