@@ -19,13 +19,13 @@ public class LoginView implements View {
     public void startView() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Login as Admin");
+        System.out.println("Login area");
         System.out.println("Enter username:");
         String username = scanner.next();
         System.out.println("Enter password:");
         String password = scanner.next();
         
-        service.login(username, password);     
+        user = service.login(username, password);     
         
         scanner.close();
     }

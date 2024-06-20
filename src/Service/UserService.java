@@ -23,14 +23,12 @@ public class UserService {
         }
     }
 
-    public void login(String login, String password){
+    public User login(String login, String password){
         try{
             for(User u : userDao.findAll(u -> u.getLogin().equals(login))){
-                System.out.println("Found 1");
                 if(u.getPassword().equals(password)){
-                    System.out.println("Foudn 2");
                     System.out.println("Login successful!");
-                    return;
+                    return u;
                 } else {
                     throw new PermissionException("Invalid username or password");
                 }
@@ -40,6 +38,8 @@ public class UserService {
         } catch (ServiceException e){
             System.out.println("Error logging in: " + e.getMessage());
         }
+
+        return null;
     }
 
     public void listAllUsers(){

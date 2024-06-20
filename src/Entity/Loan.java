@@ -46,4 +46,15 @@ public class Loan extends Entity {
     public String getDateReturned() {
         return dateReturned;
     }
+
+    @Override
+    public String toString() {
+        String str = this.getId() + " - Book: " + this.bookLoaned.getTitle();
+        str += "\n User: " + this.getLoanedTo().getName();
+        str += "\n Date Loaned: " + this.getDateLoaned();
+        if(this.getDateReturned() != null) {
+            str += "\n Date Returned: " + this.getDateReturned();
+        }
+        return str;
+    }
 }

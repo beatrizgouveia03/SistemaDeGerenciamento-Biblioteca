@@ -13,16 +13,28 @@ import DAO.GenericDAO;
 public class LoanService {
     /* Attributes */
     private DAO<Loan> loanDao = new GenericDAO<>();
+    private DAO<Book> bookDao = new GenericDAO<>();
 
     /* Methods */
-    public void loanBook(Client client, Book book){
+    public void loanBook(Client client, Integer bookId){
         LocalDate date = LocalDate.now();
-        Loan loan = new Loan(book, client, date.toString());
+        Optional<Book> aux = Optional.empty();
+        try {
+            aux = bookDao.findById(bookId);
+        } catch (DAOException e) {
+            System.out.println("Error creating loan: " + e.getMessage());
+        }
 
-        try{
-            loanDao.save(loan);
-        } catch (DAOException e){
-            System.out.println("Erro ao realizar empréstimo: " + e.getMessage());
+        Book book;
+
+        if(aux.isPresent()) {
+            book = aux.get();
+            Loan loan = new Loan(book, client, date.toString());
+            try{
+                loanDao.save(loan);
+            } catch (DAOException e){
+                System.out.println("Error creating loan: " + e.getMessage());
+            }
         }
     }
 
@@ -35,7 +47,17 @@ public class LoanService {
                 loan.get().getBookLoaned().setDisponible(true);
             }
         } catch (DAOException e){
-            System.out.println("Erro ao realizar devolução: " + e.getMessage());
+            System.out.println("Error returning loan: " + e.getMessage());
+        }
+    }
+
+    public void listAllLoans(){
+        try{
+            for(Loan loan : loanDao.findAll()){
+                System.out.println(loan.toString());
+            }
+        } catch (DAOException e){
+            System.out.println("Error listing loans: " + e.getMessage());
         }
     }
 

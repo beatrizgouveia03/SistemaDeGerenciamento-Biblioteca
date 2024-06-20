@@ -2,13 +2,14 @@ package View;
 
 import java.util.Scanner;
 
+import Entity.Client;
 import Entity.Admin;
 import Entity.User;
 import Service.UserService;
 
 public class MainView implements View {
-	private User user;
-	private Scanner scanner;
+	private User user = new Client("null", "null", "null");
+	private Scanner scanner = new Scanner(System.in);
 	private UserService service;
 	
 	public static void main(String[] args) {
@@ -24,44 +25,46 @@ public class MainView implements View {
 		} else {
 			if(this.user instanceof Admin) {
 				adminPage();
+			} else {
+				userPage();
 			}
 		}
 
 	}
 
 	private void entryPage(){
-		this.scanner = new Scanner(System.in);
+		while (true) {
+			System.out.println("Welcome to the Library System!");
+			System.out.println("Please choose an option:");
+			System.out.println("1. Login");
+			System.out.println("2. Register");
+			System.out.println("3. Exit");
+			
+			int option;
+			View view;
+			
+			while(true){
+				try{
+					option = scanner.nextInt();
+				} catch (Exception e) {
+					scanner.next();
+					System.out.println("Invalid input. Please try again.");
+					continue;
+				}
 
-		System.out.println("Welcome to the Library System!");
-		System.out.println("Please choose an option:");
-		System.out.println("1. Login");
-		System.out.println("2. Register");
-		System.out.println("3. Exit");
-		
-		int option;
-		View view;
-		
-		while(true){
-			try{
-				option = scanner.nextInt();
-			} catch (Exception e) {
-				scanner.next();
-				System.out.println("Invalid input. Please try again.");
-				continue;
+				if(option >= 1 && option <= 3) break;
+				else System.out.println("Invalid option. Please try again.");
 			}
 
-			if(option == 1 || option == 2) break;
-			else System.out.println("Invalid option. Please try again.");
-		}
+			if(option == 3){
+				scanner.close();
+				break;
+			}
 
-		if(option == 3){
-			scanner.close();
-			return;
+			view = (option == 2)? new RegisterView(user): new LoginView(user);
+			
+			view.startView();
 		}
-
-		view = (option == 2)? new RegisterView(user): new LoginView(user);
-		
-		view.startView();
 
 		scanner.close();
 
@@ -109,7 +112,7 @@ public class MainView implements View {
 			case 2: view = new BookView(user);
 					view.startView();
 					break;
-			case 3: view = new LoanView();
+			case 3: view = new LoanView(user);
 					view.startView();
 					break;
 			default:
@@ -117,6 +120,54 @@ public class MainView implements View {
 		}
 
 		scanner.close();
+	}
+
+	private void userPage(){
+
+		System.out.println("Welcome, " + user.getName());
+		System.out.println("1. Go to the books area");
+		System.out.println("2. Go to the loans area");
+		System.out.println("3. Logout");
+
+		int option;
+		View view;
+		
+		while(true){
+			try{
+				option = scanner.nextInt();
+			} catch (Exception e) {
+				scanner.next();
+				System.out.println("Invalid input. Please try again.");
+				continue;
+			}
+
+			if(option >=1 && option <=3) break;
+			else System.out.println("Invalid option. Please try again.");
+		}
+
+		if(option == 3){
+			this.user = null;
+			this.startView();
+
+			scanner.close();
+			return;
+		}
+
+		switch (
+			option
+		) {
+			case 1: view = new BookView(user);
+					view.startView();
+					break;
+			case 2: view = new LoanView(user);
+					view.startView();
+					break;
+			default:
+				break;
+		}
+
+		scanner.close();
+
 	}
 
 }
