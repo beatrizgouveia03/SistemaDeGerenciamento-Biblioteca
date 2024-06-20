@@ -3,13 +3,13 @@ package Entity;
 public class Book extends Entity {
 	/* Attributes */
 	private String title;
-	private Author author;
+	private String author;
 	private String genre;
 	private boolean disponible;
 
 
 	/* Constructor */
-	public Book(String title, Author author, String genre){
+	public Book(String title, String author, String genre){
 		this.title = title;
 		this.author = author;
 		this.genre = genre;
@@ -21,7 +21,7 @@ public class Book extends Entity {
 		this.title = title;
 	}
 
-	public void setAuthor(Author author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
@@ -37,7 +37,7 @@ public class Book extends Entity {
 		return title;
 	}
 
-	public Author getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
 

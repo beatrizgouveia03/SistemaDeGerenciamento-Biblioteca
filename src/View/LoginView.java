@@ -9,37 +9,24 @@ import Service.UserService;
 public class LoginView implements View {
     /* Attributes */
     private UserService service = new UserService();
-    private Integer sessionType;
+    private User user;
 
-    public LoginView(int type){
-        this.sessionType = type;        
+    public LoginView(User user){
+        this.user = user;       
     }
 
     /* Methods */
     public void startView() {
-       switch (sessionType) {
-        case 1: loginAdmin();           
-                break;
-        case 2: loginUser();
-                break;      
-        default:
-            break;
-       }
-    }
-
-    private void loginAdmin(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Login as Admin");
         System.out.println("Enter username:");
-        String username = scanner.nextLine();
+        String username = scanner.next();
         System.out.println("Enter password:");
-        String password = scanner.nextLine();
+        String password = scanner.next();
         
-        service.login(username, password, sessionType);       
-    }
-
-    private void loginUser(){
-        System.out.println("Login as User");
+        service.login(username, password);     
+        
+        scanner.close();
     }
 }

@@ -2,7 +2,14 @@ package View;
 
 import java.util.Scanner;
 
+import Entity.Admin;
+import Entity.User;
+import Service.UserService;
+
 public class MainView implements View {
+	private User user;
+	private Scanner scanner;
+	private UserService service;
 	
 	public static void main(String[] args) {
         MainView mainView = new MainView();
@@ -12,41 +19,104 @@ public class MainView implements View {
 	
 	@Override
 	public void startView() {
-		View view;
-		int option = -1;
-		boolean choose = false;
-		Scanner scan = new Scanner(System.in);
+		if(this.user == null){
+			entryPage();
+		} else {
+			if(this.user instanceof Admin) {
+				adminPage();
+			}
+		}
+
+	}
+
+	private void entryPage(){
+		this.scanner = new Scanner(System.in);
 
 		System.out.println("Welcome to the Library System!");
 		System.out.println("Please choose an option:");
-		System.out.println("1. Login as Librarian");
-		System.out.println("2. Login as Member");
-		System.out.println("3. Register as user");
-		System.out.println("4. Exit");
-
-		while(!choose){
+		System.out.println("1. Login");
+		System.out.println("2. Register");
+		System.out.println("3. Exit");
+		
+		int option;
+		View view;
+		
+		while(true){
 			try{
-				option = scan.nextInt();
+				option = scanner.nextInt();
 			} catch (Exception e) {
-				scan.next();
+				scanner.next();
 				System.out.println("Invalid input. Please try again.");
 				continue;
 			}
 
-			if(option == 1 || option == 2 || option == 3) choose = true;
+			if(option == 1 || option == 2) break;
+			else System.out.println("Invalid option. Please try again.");
+		}
+
+		if(option == 3){
+			scanner.close();
+			return;
+		}
+
+		view = (option == 2)? new RegisterView(user): new LoginView(user);
+		
+		view.startView();
+
+		scanner.close();
+
+	}
+
+	private void adminPage(){
+		this.scanner = new Scanner(System.in);
+
+		System.out.println("Welcome, Admin!");
+		System.out.println("Please choose an option:");
+		System.out.println("1. Manage Users");
+		System.out.println("2. Manage Books");
+		System.out.println("3. Manage Borrowings");
+		System.out.println("4. Logout");
+
+		int option;
+		View view;
+		
+		while(true){
+			try{
+				option = scanner.nextInt();
+			} catch (Exception e) {
+				scanner.next();
+				System.out.println("Invalid input. Please try again.");
+				continue;
+			}
+
+			if(option >=1 && option <=4) break;
 			else System.out.println("Invalid option. Please try again.");
 		}
 
 		if(option == 4){
-			scan.close();
+			this.user = null;
+			this.startView();
+
+			scanner.close();
 			return;
 		}
 
-		view = (option == 3)? new RegisterView(): new LoginView(option);
-		
-		view.startView();
+		switch (
+			option
+		) {
+			case 1: service.listAllUsers();				
+				break;
+			case 2: view = new BookView(user);
+					view.startView();
+					break;
+			case 3: view = new LoanView();
+					view.startView();
+					break;
+			default:
+				break;
+		}
 
-		scan.close();
+		scanner.close();
 	}
 
 }

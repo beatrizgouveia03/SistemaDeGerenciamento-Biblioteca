@@ -2,7 +2,6 @@ package Service;
 
 import DAO.DAO;
 import Entity.Book;
-import Entity.Author;
 import DAO.GenericDAO;
 import Exception.DAOException;
 
@@ -37,7 +36,7 @@ public class BookService {
         }
     }
 
-    public void listBooksByAuthor(Author author){
+    public void listBooksByAuthor(String author){
         try{
             for (Book book : bookDao.findAll((b -> b.getAuthor().equals(author)))){
                 System.out.println(book.toString());

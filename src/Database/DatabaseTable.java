@@ -12,7 +12,7 @@ import Exception.EntityNotFoundException;
 
 public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
 	/* Attributes */
-	private Integer idGenerator;
+	private Integer idGenerator = 0;
 	private Map<Integer, T> table = new HashMap<>();
 
 	/* Methods */

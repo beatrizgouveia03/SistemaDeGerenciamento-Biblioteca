@@ -24,6 +24,7 @@ public class Database {
             tables.put(class1, new DatabaseTable<>());
         }
 
+        System.out.println(class1);
         DatabaseTableI<? extends Entity> table = tables.get(class1);
         ((DatabaseTableI<T>) table).save(entity);
     }
@@ -40,7 +41,7 @@ public class Database {
     public <T extends Entity> List<T> findAll(Class<T> clazz) throws DatabaseException{
         if(!tables.containsKey(clazz)){
             tables.put(clazz, new DatabaseTable<>());
-        } 
+        }
 
         DatabaseTableI<? extends Entity> table = tables.get(clazz);
         return ((DatabaseTableI<T>) table).findAll();
@@ -51,7 +52,7 @@ public class Database {
             tables.put(clazz, new DatabaseTable<>());
         } 
     
-        DatabaseTableI<? extends Entity> table = tables.get(clazz);
+        DatabaseTableI<?> table = tables.get(clazz);
         ((DatabaseTableI<T>) table).update(id, entity);
     }
 
