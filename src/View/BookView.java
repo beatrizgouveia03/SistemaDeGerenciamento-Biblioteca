@@ -37,7 +37,7 @@ public class BookView implements View {
         System.out.println("1. View all books");
         System.out.println("2. Search for books by Author");
         System.out.println("3. Search for books by Genre");
-        System.out.println("3. Exit");
+        System.out.println("4. Exit");
         
         int option;
 
@@ -136,21 +136,22 @@ public class BookView implements View {
     }
 
     private void removeBook(){
-        service.listAllBooks();
-        System.out.println("Enter book ID to remove:");
-        int id = -1;
+        if(service.listAllBooks()){
+            System.out.println("Enter book ID to remove:");
+            int id = -1;
 
-        while(true){
-            try{
-                id = scanner.nextInt();
-            } catch (Exception e) {
-                scanner.next();    
-                System.out.println("Invalid input. Please try again.");
-                continue;
+            while(true){
+                try{
+                    id = scanner.nextInt();
+                } catch (Exception e) {
+                    scanner.next();    
+                    System.out.println("Invalid input. Please try again.");
+                    continue;
+                }
+                break;
             }
-            break;
-        }
 
-        if(id != -1) service.removeBook(id);
+            if(id != -1) service.removeBook(id);
+        }
     }
 }

@@ -60,5 +60,4 @@ public class LoanService {
             System.out.println("Error listing loans: " + e.getMessage());
         }
     }
-
 }

@@ -75,11 +75,11 @@ public class MainView implements View {
 
 	private void adminPage(){
 
-		System.out.println("Welcome, Admin!");
+		System.out.println("\nWelcome, Admin!");
 		System.out.println("Please choose an option:");
-		System.out.println("1. Manage Users");
+		System.out.println("1. List Users");
 		System.out.println("2. Manage Books");
-		System.out.println("3. Manage Borrowings");
+		System.out.println("3. List Borrowings");
 		System.out.println("4. Logout");
 
 		int option;

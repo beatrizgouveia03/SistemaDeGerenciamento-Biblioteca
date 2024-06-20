@@ -77,30 +77,33 @@ public class LoanView implements View {
     }
 
     private void loanBook(){
-        books.listAllBooks();
-        System.out.println("Enter the book ID:");
-        int bookId;
+        if(books.listAllBooks()){
+            System.out.println("Enter the book ID:");
+            int bookId;
 
-        while (true) {
-            try{
-                bookId = scanner.nextInt();
-            } catch (Exception e) {
-                scanner.next();
-                System.out.println("Invalid input. Please try again.");
-                continue;
+            while (true) {
+                try{
+                    bookId = scanner.nextInt();
+                } catch (Exception e) {
+                    scanner.next();
+                    System.out.println("Invalid input. Please try again.");
+                    continue;
+                }
+                break;
             }
-            break;
-        }
 
-        if(user instanceof Client) {
-            Client client = (Client) user;
-            service.loanBook(client, bookId);
+            if(user instanceof Client) {
+                Client client = (Client) user;
+                service.loanBook(client, bookId);
+            }
         }
     }
 
     private void returnBook(){
         if(user instanceof Client) {
             Client client = (Client) user;
+            if(client.getLoans().isEmpty()){ return;}
+
             for(Loan l: client.getLoans()){
                 System.out.println(l);
             }

@@ -48,5 +48,4 @@ public class UserService {
             System.out.println("Error listing users: " + e.getMessage());
         }
     }
-
 }

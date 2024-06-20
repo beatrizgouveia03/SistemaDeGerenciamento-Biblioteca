@@ -26,14 +26,17 @@ public class BookService {
         }
     }
 
-    public void listAllBooks(){
+    public boolean listAllBooks(){
         try{
             for (Book book : bookDao.findAll()){
                 System.out.println(book.toString());
             }
+            return true;
         } catch (DAOException e){
             System.out.println("Error listing books: " + e.getMessage());
         }
+
+        return false;
     }
 
     public void listBooksByAuthor(String author){
