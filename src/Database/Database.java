@@ -19,12 +19,12 @@ public class Database {
     }
 
     /* Methods */
-	public <T extends Entity> void save(Class<? extends Entity> class1, T entity) throws DatabaseException {
-        if (!tables.containsKey(class1)) {
-            tables.put(class1, new DatabaseTable<>());
+	public <T extends Entity> void save(Class<? extends Entity> clazz, T entity) throws DatabaseException {
+        if (!tables.containsKey(clazz)) {
+            tables.put(clazz, new DatabaseTable<>());
         }
 
-        DatabaseTableI<? extends Entity> table = tables.get(class1);
+        DatabaseTableI<? extends Entity> table = tables.get(clazz);
         ((DatabaseTableI<T>) table).save(entity);
     }
     
