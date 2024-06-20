@@ -44,7 +44,7 @@ public class UserService {
             for (User user : userDao.findAll()){
                 System.out.println(user.toString());
             }
-        } catch (Exception e){
+        } catch (DAOException e){
             System.out.println("Error listing users: " + e.getMessage());
         }
     }
