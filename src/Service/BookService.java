@@ -7,7 +7,7 @@ import Exception.DAOException;
 
 public class BookService {
     /* Attributes */
-    private DAO<Book> bookDao = new GenericDAO<>();
+    private DAO<Book> bookDao = new GenericDAO<>(Book.class);
 
     /* Methods */
     public void createBook(Book book) {

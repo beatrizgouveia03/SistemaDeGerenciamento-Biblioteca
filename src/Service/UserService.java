@@ -8,7 +8,7 @@ import Exception.ServiceException;
 
 public class UserService {
     /* Attributes */
-    private GenericDAO<User> userDao = new GenericDAO<>();
+    private GenericDAO<User> userDao = new GenericDAO<>(User.class);
 
     /* Methods */
     public void createUser(User user) {

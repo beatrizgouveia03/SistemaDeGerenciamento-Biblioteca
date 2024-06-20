@@ -19,7 +19,7 @@ public class RegisterView implements View {
 
     /* Methods */
     public void startView() {   
-        System.out.println("Signing up new user");
+        System.out.println("Welcome to the signing area");
         System.out.println("Enter your name:");
         String name = scanner.nextLine();
         System.out.println("Enter your username:");
@@ -34,6 +34,10 @@ public class RegisterView implements View {
         else user = new Client(name, login, password);
 
         service.createUser(user);
-        service.login(login, password);
+        user = service.login(login, password);
+
+        MainView main = new MainView(user);
+
+        main.startView();
     }
 }

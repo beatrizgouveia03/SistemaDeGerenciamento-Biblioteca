@@ -16,11 +16,15 @@ public class GenericDAO<T extends Entity> implements DAO<T> {
     /* Attributes */
     private Class<T> clazz;
     private Database database = Database.getInstance();
+
+    public GenericDAO(Class<T> clazz){
+        this.clazz = clazz;
+    }
     
     /* Methods */
 	public void save(T entity) throws DAOException{
         try{
-            database.save(entity.getClass(), entity);
+            database.save(clazz, entity);
         } catch (DatabaseException e){
             throw new DAOException(e.getMessage());
         }

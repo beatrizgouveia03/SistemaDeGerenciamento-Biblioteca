@@ -20,7 +20,7 @@ public class BookView implements View {
     /* Methods */
     @Override
     public void startView() {
-        System.out.println("Welcome to Book Management System!");
+        System.out.println("\nWelcome to Book Management System!");
         
         if(user instanceof Admin){
             adminMenu();
@@ -28,7 +28,7 @@ public class BookView implements View {
             userMenu();
         }
 
-        MainView main = new MainView();
+        MainView main = new MainView(user);
         main.startView();
     }
 
@@ -121,12 +121,14 @@ public class BookView implements View {
     }
 
     private void addBook(){
+        scanner = new Scanner(System.in);
+
         System.out.println("Enter book title:");
-        String title = scanner.next();
+        String title = scanner.nextLine();
         System.out.println("Enter book author:");
-        String author = scanner.next();
+        String author = scanner.nextLine();
         System.out.println("Enter book genre:");
-        String genre = scanner.next();
+        String genre = scanner.nextLine();
         
         Book book = new Book(title,author, genre);
 

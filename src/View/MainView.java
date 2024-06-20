@@ -7,13 +7,16 @@ import Entity.User;
 import Service.UserService;
 
 public class MainView implements View {
-	private User user = new Admin("null", "null", "null");
+	private User user;
 	private Scanner scanner = new Scanner(System.in);
 	private UserService service = new UserService();
+
+	public MainView(User user){
+		this.user = user;
+	}
 	
 	public static void main(String[] args) {
-        MainView mainView = new MainView();
-
+        MainView mainView = new MainView(null);
         mainView.startView();
     }
 	
@@ -32,6 +35,7 @@ public class MainView implements View {
 	}
 
 	private void entryPage(){
+		scanner = new Scanner(System.in);
 		while (true) {
 			System.out.println("Welcome to the Library System!");
 			System.out.println("Please choose an option:");
@@ -70,7 +74,6 @@ public class MainView implements View {
 	}
 
 	private void adminPage(){
-		this.scanner = new Scanner(System.in);
 
 		System.out.println("Welcome, Admin!");
 		System.out.println("Please choose an option:");
@@ -123,8 +126,7 @@ public class MainView implements View {
 	}
 
 	private void userPage(){
-
-		System.out.println("Welcome, " + user.getName());
+		System.out.println("\nWelcome, " + user.getName());
 		System.out.println("1. Go to the books area");
 		System.out.println("2. Go to the loans area");
 		System.out.println("3. Logout");

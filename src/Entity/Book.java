@@ -51,9 +51,11 @@ public class Book extends Entity {
 
 	@Override
 	public String toString() {
-		String str = this.getId() + " - Title: " + this.title + "\nAuthor: " + this.author + "Genre: " + this.genre + "Disponibility: ";
-
+		String str = this.getId() + " - Title: " + this.title;
+		str += "\nAuthor: " + this.author + "\nGenre: " + this.genre;
+		str += "Disponibility: ";
 		str +=  (isDisponible())? "Yes\n":"No \n";
+		
 		return str;
 	}
 }

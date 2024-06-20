@@ -22,7 +22,7 @@ public class LoanView implements View {
 
     /* Methods */
     public void startView() {
-        System.out.println("Welcome to Loan Management System!");
+        System.out.println("\nWelcome to Loan Management System!");
         
         if(user instanceof Admin){
             adminMenu();
@@ -30,7 +30,7 @@ public class LoanView implements View {
             userMenu();
         }
 
-        MainView main = new MainView();
+        MainView main = new MainView(user);
         main.startView();
     }
 

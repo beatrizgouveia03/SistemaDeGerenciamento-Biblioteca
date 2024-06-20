@@ -12,8 +12,8 @@ import DAO.GenericDAO;
 
 public class LoanService {
     /* Attributes */
-    private DAO<Loan> loanDao = new GenericDAO<>();
-    private DAO<Book> bookDao = new GenericDAO<>();
+    private DAO<Loan> loanDao = new GenericDAO<>(Loan.class);
+    private DAO<Book> bookDao = new GenericDAO<>(Book.class);
 
     /* Methods */
     public void loanBook(Client client, Integer bookId){
