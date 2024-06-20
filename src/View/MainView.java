@@ -15,11 +15,6 @@ public class MainView implements View {
 		this.user = user;
 	}
 	
-	public static void main(String[] args) {
-        MainView mainView = new MainView(null);
-        mainView.startView();
-    }
-	
 	@Override
 	public void startView() {
 		if(this.user == null){
