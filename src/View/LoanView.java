@@ -29,6 +29,9 @@ public class LoanView implements View {
         } else {
             userMenu();
         }
+
+        MainView main = new MainView();
+        main.startView();
     }
 
     private void adminMenu(){

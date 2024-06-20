@@ -24,7 +24,6 @@ public class Database {
             tables.put(class1, new DatabaseTable<>());
         }
 
-        System.out.println(class1);
         DatabaseTableI<? extends Entity> table = tables.get(class1);
         ((DatabaseTableI<T>) table).save(entity);
     }

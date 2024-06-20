@@ -1,9 +1,6 @@
 package Service;
 
 import Entity.User;
-import Entity.Admin;
-import Entity.Book;
-import Entity.Client;
 import DAO.GenericDAO;
 import Exception.DAOException;
 import Exception.PermissionException;
@@ -47,7 +44,7 @@ public class UserService {
             for (User user : userDao.findAll()){
                 System.out.println(user.toString());
             }
-        } catch (DAOException e){
+        } catch (Exception e){
             System.out.println("Error listing users: " + e.getMessage());
         }
     }

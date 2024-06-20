@@ -25,7 +25,7 @@ public class LoginView implements View {
         System.out.println("Enter password:");
         String password = scanner.next();
         
-        user = service.login(username, password);     
+        this.user = service.login(username, password);     
         
         scanner.close();
     }

@@ -2,15 +2,14 @@ package View;
 
 import java.util.Scanner;
 
-import Entity.Client;
 import Entity.Admin;
 import Entity.User;
 import Service.UserService;
 
 public class MainView implements View {
-	private User user = new Client("null", "null", "null");
+	private User user = new Admin("null", "null", "null");
 	private Scanner scanner = new Scanner(System.in);
-	private UserService service;
+	private UserService service = new UserService();
 	
 	public static void main(String[] args) {
         MainView mainView = new MainView();
@@ -107,8 +106,9 @@ public class MainView implements View {
 		switch (
 			option
 		) {
-			case 1: service.listAllUsers();				
-				break;
+			case 1: service.listAllUsers();	
+					adminPage();
+					break;
 			case 2: view = new BookView(user);
 					view.startView();
 					break;

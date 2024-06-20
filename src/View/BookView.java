@@ -27,6 +27,9 @@ public class BookView implements View {
         } else {
             userMenu();
         }
+
+        MainView main = new MainView();
+        main.startView();
     }
 
     private void userMenu(){
